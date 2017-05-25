@@ -11,10 +11,16 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
 
-GetData getData = new GetData();
-getData.soutResults("testlog.log");
+        GetData getData = new GetData();
+        getData.soutResults(args[0]);
+        System.out.println("Введите exit для выхода ");
+        Scanner scanner = new Scanner(System.in);
+        String command = "";
+        while (!(command=scanner.nextLine()).equals("exit")){
+            System.out.println(command);
+            System.out.println("Для выхода введите exit");
+        }
     }
-
 
 
 }

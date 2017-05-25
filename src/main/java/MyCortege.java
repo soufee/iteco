@@ -4,6 +4,7 @@
  *
  *
  */
+@Deprecated
 public class MyCortege<A, B, C, D, E, F> {
     public A a;
     public B b;

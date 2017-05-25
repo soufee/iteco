@@ -19,15 +19,15 @@ public class GetData {
     private static String line = "";
     private static final Logger logger = Logger.getLogger(GetData.class);
 
-    public int getSetSize()
-    {
+    public int getSetSize() {
         return set.size();
     }
-    public void soutResults(String fileName)  {
+
+    public void soutResults(String fileName) {
         logger.debug("Starting...");
         fillInMaps(fileName);
         ArrayList<MethodCortege> list = null;
-        ArrayList<MyCortege> resultlist = null;
+
         try {
             list = (ArrayList<MethodCortege>) getList();
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class GetData {
             System.out.println(string + " min " + getMinTime(string, list) + " max " + getMaxTime(string, list)
                     + " avg " + getAvgTime(string, list) + " max id " + getMaxId(string, list) + " count " + count(string, list));
         }
-logger.debug("Started...");
+        logger.debug("Started...");
     }
 
 
@@ -64,8 +64,7 @@ logger.debug("Started...");
     }
 
 
-
-    private List<MethodCortege> getList()  {
+    private List<MethodCortege> getList() {
         logger.debug("getting list");
         List<MethodCortege> result = new ArrayList<MethodCortege>();
         for (Map.Entry<String, String> entry : entries.entrySet()) {
@@ -94,7 +93,7 @@ logger.debug("Started...");
         }
     }
 
-    private long getTime(String string)  {
+    private long getTime(String string) {
         if (exits.containsKey(string)) {
             String entry = entries.get(string);
             String exit = exits.get(string);
@@ -107,7 +106,7 @@ logger.debug("Started...");
     private long getDate(String string) {
 
         String d = string.substring(0, 23);
-      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss,SSS");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss,SSS");
         Date date = null;
         try {
             date = simpleDateFormat.parse(d);
@@ -123,7 +122,7 @@ logger.debug("Started...");
     private String getMethodNameWithId(String line) {
         String classname = line.substring(line.indexOf('[') + 1, line.indexOf(']'));
         String methodWithId = classname + ":" + line.substring(line.indexOf('(') + 1, line.indexOf(')'));
-        //  System.out.println(methodWithId);
+
         return methodWithId;
     }
 
@@ -194,32 +193,5 @@ logger.debug("Started...");
         return counter;
     }
 
-//private MyCortege getAllData(String methodName, List<MethodCortege> list)
-//{
-//
-//   int id = 0;
-//   long mintime = Integer.MAX_VALUE;
-//   long maxtime = 0;
-//   long avgtime = 0;
-//   int count = 0;
-//    for (MethodCortege cortege : list) {
-//        if ((cortege.getMethod().equals(methodName)) && (cortege.getTime() > maxtime)) {
-//            maxtime = cortege.getTime();
-//            id = cortege.getId();
-//        }
-//        if ((cortege.getMethod().equals(methodName)) && (cortege.getTime() < mintime)) {
-//            mintime = cortege.getTime();
-//
-//        }
-//int avg = 0;
-//        if (cortege.getMethod().equals(methodName)) {
-//            avg += cortege.getTime();
-//            count++;
-//        }
-//avgtime = avg/count;
-//    }
-//    MyCortege cortege = new MyCortege(methodName,id,maxtime,mintime,avgtime,count);
-//    return cortege;
-//}
 
 }
